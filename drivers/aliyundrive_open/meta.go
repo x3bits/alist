@@ -8,7 +8,9 @@ import (
 type Addition struct {
 	DriveType string `json:"drive_type" type:"select" options:"default,resource,backup" default:"default"`
 	driver.RootID
-	RefreshToken       string `json:"refresh_token" required:"true"`
+	RefreshToken       string `json:"refresh_token" help:"required unless fixed_accessed_token is filled"`
+	//access token got from no backend mode, see https://www.yuque.com/aliyundrive/zpfszx/eam8ls1lmawwwksv
+	FixedAccessToken   string `json:"fixed_accessed_token"`
 	OrderBy            string `json:"order_by" type:"select" options:"name,size,updated_at,created_at"`
 	OrderDirection     string `json:"order_direction" type:"select" options:"ASC,DESC"`
 	OauthTokenURL      string `json:"oauth_token_url" default:"https://api.nn.ci/alist/ali_open/token"`

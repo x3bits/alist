@@ -74,6 +74,10 @@ func getSub(token string) (string, error) {
 }
 
 func (d *AliyundriveOpen) refreshToken() error {
+	if (d.FixedAccessToken!="") {
+		d.AccessToken = d.FixedAccessToken
+		return nil
+	}
 	refresh, access, err := d._refreshToken()
 	for i := 0; i < 3; i++ {
 		if err == nil {
